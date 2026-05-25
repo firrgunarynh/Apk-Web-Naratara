@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/api/v1';
+// Gunakan relative path agar Vite proxy berjalan di lokal, dan rewrite berjalan di Vercel
+const API_BASE_URL = '/api/v1';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
