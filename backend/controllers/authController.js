@@ -146,7 +146,7 @@ const getMe = async (req, res) => {
       data: req.user,
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: 'Terjadi kesalahan server.', data: null });
+    res.status(500).json({ success: false, message: 'Terjadi kesalahan server: ' + error.message, data: null });
   }
 };
 
@@ -158,7 +158,7 @@ const getAllUsers = async (req, res) => {
     );
     res.status(200).json({ success: true, message: 'Daftar user berhasil dimuat', data: rows });
   } catch (error) {
-    res.status(500).json({ success: false, message: 'Terjadi kesalahan server.', data: null });
+    res.status(500).json({ success: false, message: 'Terjadi kesalahan server: ' + error.message, data: null });
   }
 };
 
@@ -186,7 +186,7 @@ const updateRole = async (req, res) => {
     res.json({ success: true, message: `Role berhasil diubah menjadi ${role}.` });
   } catch (error) {
     console.error('Update role error:', error);
-    res.status(500).json({ success: false, message: 'Terjadi kesalahan server.', data: null });
+    res.status(500).json({ success: false, message: 'Terjadi kesalahan server: ' + error.message, data: null });
   }
 };
 
@@ -209,7 +209,7 @@ const deleteUser = async (req, res) => {
     res.json({ success: true, message: `User "${existing[0].username}" berhasil dihapus.` });
   } catch (error) {
     console.error('Delete user error:', error);
-    res.status(500).json({ success: false, message: 'Terjadi kesalahan server.', data: null });
+    res.status(500).json({ success: false, message: 'Terjadi kesalahan server: ' + error.message, data: null });
   }
 };
 

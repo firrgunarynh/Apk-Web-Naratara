@@ -75,7 +75,7 @@ const getAllNews = async (req, res) => {
     });
   } catch (error) {
     console.error('getAllNews error:', error);
-    res.status(500).json({ success: false, message: 'Terjadi kesalahan server.', data: null });
+    res.status(500).json({ success: false, message: 'Terjadi kesalahan server: ' + error.message, data: null });
   }
 };
 
@@ -108,7 +108,7 @@ const getNewsById = async (req, res) => {
     res.status(200).json({ success: true, message: 'Detail berita berhasil dimuat', data: rows[0] });
   } catch (error) {
     console.error('getNewsById error:', error);
-    res.status(500).json({ success: false, message: 'Terjadi kesalahan server.', data: null });
+    res.status(500).json({ success: false, message: 'Terjadi kesalahan server: ' + error.message, data: null });
   }
 };
 
@@ -148,7 +148,7 @@ const createNews = async (req, res) => {
     res.status(201).json({ success: true, message: 'Berita berhasil ditambahkan!', data: newNews[0] });
   } catch (error) {
     console.error('createNews error:', error);
-    res.status(500).json({ success: false, message: 'Terjadi kesalahan server.', data: null });
+    res.status(500).json({ success: false, message: 'Terjadi kesalahan server: ' + error.message, data: null });
   }
 };
 
@@ -184,7 +184,7 @@ const updateNews = async (req, res) => {
     res.json({ success: true, message: 'Berita berhasil diperbarui!', data: updated[0] });
   } catch (error) {
     console.error('updateNews error:', error);
-    res.status(500).json({ success: false, message: 'Terjadi kesalahan server.', data: null });
+    res.status(500).json({ success: false, message: 'Terjadi kesalahan server: ' + error.message, data: null });
   }
 };
 
@@ -203,7 +203,7 @@ const deleteNews = async (req, res) => {
     res.json({ success: true, message: `Berita "${existing[0].judul}" berhasil dihapus.` });
   } catch (error) {
     console.error('deleteNews error:', error);
-    res.status(500).json({ success: false, message: 'Terjadi kesalahan server.', data: null });
+    res.status(500).json({ success: false, message: 'Terjadi kesalahan server: ' + error.message, data: null });
   }
 };
 
@@ -213,7 +213,7 @@ const getKategori = async (req, res) => {
     const [rows] = await pool.execute('SELECT * FROM kategori ORDER BY nama ASC');
     res.status(200).json({ success: true, message: 'Kategori berhasil dimuat', data: rows });
   } catch (error) {
-    res.status(500).json({ success: false, message: 'Terjadi kesalahan server.', data: null });
+    res.status(500).json({ success: false, message: 'Terjadi kesalahan server: ' + error.message, data: null });
   }
 };
 
